@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         ),
         home: MyHomePage(),
       ),
@@ -106,11 +106,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: BottomNavigationBar(
                     items: [
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.home),
+                        icon: Icon(Icons.home_outlined),
                         label: 'Home',
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.favorite),
+                        icon: Icon(Icons.favorite_border),
                         label: 'Favorites',
                       ),
                     ],
@@ -132,11 +132,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     extended: constraints.maxWidth >= 600,
                     destinations: [
                       NavigationRailDestination(
-                        icon: Icon(Icons.home),
+                        icon: Icon(Icons.home_outlined),
                         label: Text('Home'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.favorite),
+                        icon: Icon(Icons.favorite_border),
                         label: Text('Favorites'),
                       ),
                     ],

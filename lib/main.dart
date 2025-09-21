@@ -79,6 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = FavoritesPage();
         break;
+      case 2:
+        page = ProfilePage();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -113,6 +116,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         icon: Icon(Icons.favorite_border),
                         label: 'Favorites',
                       ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.person_outlined),
+                        label: 'Profile',
+                      ),
                     ],
                     currentIndex: selectedIndex,
                     onTap: (value) {
@@ -138,6 +145,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       NavigationRailDestination(
                         icon: Icon(Icons.favorite_border),
                         label: Text('Favorites'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.person_outlined),
+                        label: Text('Profile'),
                       ),
                     ],
                     selectedIndex: selectedIndex,
@@ -358,6 +369,42 @@ class _HistoryListViewState extends State<HistoryListView> {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+  return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(30),
+            // SizedBox로 감싸서 너비와 높이를 150으로 고정
+            child: SizedBox(
+              width: 150,
+              height: 150,
+              child: ClipRRectExample(), // 이제 ClipRRectExample은 150x150 크기를 따름
+            ),
+          ),
+        ],
+      );
+  }
+}
+
+class ClipRRectExample extends StatelessWidget {
+  const ClipRRectExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(40.0),
+      constraints: const BoxConstraints.expand(),
+      // Add a FittedBox to make ClipRRect sized accordingly to the image it contains
+      child: FittedBox(
+        child: ClipRRect(borderRadius: BorderRadius.circular(50.0), child: Image.network('https://i.pinimg.com/736x/12/6f/a0/126fa03dbe747ed88763181e3d548d1c.jpg')),
       ),
     );
   }

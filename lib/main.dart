@@ -296,9 +296,26 @@ class FavoritesPage extends StatelessWidget {
                   trailing: IconButton(
                     icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
                     color: theme.colorScheme.primary,
-                    onPressed: () {
-                      appState.removeFavorite(pair);
-                    },
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Delete', style: TextStyle(fontWeight: FontWeight.bold)),
+                        content: const Text('Are you sure you want to delete it?'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              appState.removeFavorite(pair);
+                              Navigator.pop(context, 'OK');
+                            },
+                            child: const Text('OK')
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   title: Text(
                     pair.asLowerCase,

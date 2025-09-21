@@ -199,6 +199,11 @@ class GeneratorPage extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: () {
                   appState.toggleFavorite();
+                  final snackBar = SnackBar(
+                    content: const Text('Saved'),
+                  );
+                  
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 icon: Icon(icon),
                 label: Text('Like'),
@@ -247,11 +252,11 @@ class BigCard extends StatelessWidget {
               children: [
                 Text(
                   pair.first,
-                  style: style.copyWith(fontWeight: FontWeight.w200),
+                  style: style.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Text(
                   pair.second,
-                  style: style.copyWith(fontWeight: FontWeight.bold),
+                  style: style.copyWith(fontWeight: FontWeight.w100),
                 )
               ],
             ),
@@ -284,15 +289,11 @@ class FavoritesPage extends StatelessWidget {
         ),
         Expanded(
           // Make better use of wide windows with a grid.
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 400,
-              childAspectRatio: 400 / 80,
-            ),
+          child: ListView(
             children: [
               for (var pair in appState.favorites)
                 ListTile(
-                  leading: IconButton(
+                  trailing: IconButton(
                     icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
                     color: theme.colorScheme.primary,
                     onPressed: () {
@@ -381,7 +382,8 @@ class ProfilePage extends StatelessWidget {
     child: Column(
       mainAxisSize: MainAxisSize.min,
         children: [
-          FittedBox(
+          Padding(
+            padding: const EdgeInsets.all(20),
             child: ClipRRect(borderRadius: BorderRadius.circular(50.0), child: Image.network('https://i.pinimg.com/736x/12/6f/a0/126fa03dbe747ed88763181e3d548d1c.jpg', width: 300, height: 300, fit: BoxFit.cover,),),
           ),
           Text('22100427', style: TextStyle(fontSize: 15)),

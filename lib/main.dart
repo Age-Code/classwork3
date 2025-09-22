@@ -401,7 +401,7 @@ class ProfilePage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(20),
-            child: ClipRRect(borderRadius: BorderRadius.circular(50.0), child: Image.network('https://i.pinimg.com/736x/12/6f/a0/126fa03dbe747ed88763181e3d548d1c.jpg', width: 300, height: 300, fit: BoxFit.cover,),),
+            child: ClipRRect(borderRadius: BorderRadius.circular(50.0), child: Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbBQgTFDHB_eWmXCKtZTAtNbhMmxkXae4THw&s', width: 300, height: 300, fit: BoxFit.cover,),),
           ),
           Text('22100427', style: TextStyle(fontSize: 15)),
           Text('Ahn Gwangeun',style: TextStyle(fontSize: 15)),
